@@ -1,10 +1,25 @@
 import { FC } from 'react'
 
-const Documentation: FC = () => {
+interface DocumentationProps {
+  onClose: () => void
+}
+
+const Documentation: FC<DocumentationProps> = ({ onClose }) => {
   return (
     <div className="container mx-auto p-6 overflow-y-auto h-full">
       <div className="bg-gray-800 rounded-lg p-8 shadow-lg border border-purple-500">
-        <h1 className="text-3xl font-bold text-purple-400 mb-6 text-center">📝 WebChat Documentation</h1>
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-purple-400 text-center flex-grow">📝 WebChat Documentation</h1>
+          <button 
+            onClick={onClose}
+            className="bg-gray-700 hover:bg-gray-600 text-gray-300 p-2 rounded-full"
+            aria-label="Close documentation"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
         
         <div className="space-y-8">
           <section>
@@ -113,7 +128,15 @@ const Documentation: FC = () => {
         </div>
         
         <div className="mt-8 text-center text-gray-400">
-          Developed with ❤️ using React, TypeScript, and WebSockets
+          <button 
+            onClick={onClose}
+            className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-6 rounded-lg shadow-md transition-colors"
+          >
+            Return to Application
+          </button>
+          <div className="mt-4">
+            Developed with ❤️ using React, TypeScript, and WebSockets
+          </div>
         </div>
       </div>
     </div>

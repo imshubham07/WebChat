@@ -1,4 +1,3 @@
-// App.jsx
 import { useState } from 'react'
 import ChatRoom from './components/ChatRoom'
 import RoomSelection from './components/RoomSelection'
@@ -28,7 +27,11 @@ const Footer = () => {
 }
 
 // Quick Help component for simplified documentation access
-const QuickHelp = ({ setActiveTab }) => {
+interface QuickHelpProps {
+  setActiveTab: (tab: 'home' | 'chat' | 'docs') => void;
+}
+
+const QuickHelp = ({ setActiveTab }: QuickHelpProps) => {
   return (
     <div className="fixed bottom-20 right-6 z-10">
       <button 
@@ -47,13 +50,12 @@ const QuickHelp = ({ setActiveTab }) => {
 function App() {
   // State for room and navigation
   const [isJoined, setIsJoined] = useState(false)
-  const [roomId, setRoomId] = useState("") 
+  const [roomId, setRoomId] = useState("")
   const [userName, setUserName] = useState("")
-  const [activeTab, setActiveTab] = useState('home')
-  const [showHelp, setShowHelp] = useState(false)
+  const [activeTab, setActiveTab] = useState<'home' | 'chat' | 'docs'>('home')
   
   // Function to handle joining a room
-  const handleJoinRoom = (roomCode, name) => {
+  const handleJoinRoom = (roomCode: string, name: string) => {
     setRoomId(roomCode)
     setUserName(name)
     setIsJoined(true)
@@ -64,11 +66,6 @@ function App() {
   const handleLeaveRoom = () => {
     setIsJoined(false)
     setRoomId("")
-  }
-
-  // Function to toggle quick help modal
-  const toggleHelp = () => {
-    setShowHelp(prev => !prev)
   }
 
   return (

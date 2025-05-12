@@ -37,6 +37,7 @@ const ChatRoom: FC<ChatRoomProps> = ({ roomId, userName, onLeaveRoom }) => {
   
   // User is typing indicator
   const [isTyping, setIsTyping] = useState<boolean>(false)
+  //@ts-ignore
   const typingTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Scroll to bottom when messages change
