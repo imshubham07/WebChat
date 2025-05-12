@@ -80,7 +80,7 @@ const ChatRoom: FC<ChatRoomProps> = ({ roomId, userName, onLeaveRoom }) => {
       
       // Create new WebSocket connection with error handling
       try {
-        const ws = new WebSocket("ws://localhost:8080");
+        const ws = new WebSocket("https://webchat-2-lokd.onrender.com");
         
         // Store WebSocket connection in ref for later use
         wsRef.current = ws;
